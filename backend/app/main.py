@@ -9,6 +9,8 @@ endpoints do algoritmo serao adicionados nos proximos commits.
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.routers.selection import router as selection_router
+
 app = FastAPI(
     title="Mediana das Medianas API",
     description="Backend para a demonstracao visual do algoritmo Mediana das Medianas.",
@@ -22,6 +24,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(selection_router)
 
 
 @app.get("/health")
