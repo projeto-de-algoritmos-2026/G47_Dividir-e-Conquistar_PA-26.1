@@ -1,0 +1,1 @@
+# G47_Dividir-e-Conquistar_PA-26.1
