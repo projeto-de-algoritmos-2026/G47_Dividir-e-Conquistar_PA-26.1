@@ -9,6 +9,7 @@ endpoints do algoritmo serao adicionados nos proximos commits.
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.routers.meeting_point import router as meeting_point_router
 from app.routers.selection import router as selection_router
 
 app = FastAPI(
@@ -26,6 +27,7 @@ app.add_middleware(
 )
 
 app.include_router(selection_router)
+app.include_router(meeting_point_router)
 
 
 @app.get("/health")
