@@ -13,34 +13,6 @@
 
 Este projeto é uma aplicação web que implementa e **visualiza** o algoritmo de **Mediana das Medianas**, utilizando o paradigma de **Dividir e Conquistar**. O **backend** é escrito em **Python (FastAPI)** e o **frontend** em **React (Vite)**.
 
-Além de animar a execução do algoritmo passo a passo, o projeto aplica-o em um problema real: encontrar o **ponto de encontro ótimo** entre um conjunto de cidades.
-
----
-
-## Como o Algoritmo Funciona
-
-Para selecionar o k-ésimo menor elemento em `O(n)`, o algoritmo segue as etapas:
-
-### 1. Dividir em grupos
-A lista é dividida em **grupos de 5 elementos**.
-
-### 2. Mediana de cada grupo
-Cada grupo é pequeno, então sua **mediana** é obtida diretamente (ordenando os ≤ 5 elementos).
-
-### 3. Mediana das medianas (o pivô)
-O algoritmo é aplicado **recursivamente** sobre a lista das medianas para escolher o **pivô** — daí o nome do método. Esse pivô garante que uma fração constante da lista seja descartada a cada passo.
-
-### 4. Particionar
-A lista é particionada em três faixas em relação ao pivô: **menores**, **iguais** e **maiores**.
-
-### 5. Conquistar
-Comparando `k` com o tamanho das faixas, o algoritmo descobre **em qual partição** o k-ésimo elemento está e **recorre apenas nela**.
-
-
----
-
-## A Aplicação: Ponto de Encontro Ótimo
-
 A segunda tela mostra um uso prático do algoritmo. Dado um conjunto de cidades, qual é o ponto que **minimiza a distância total** até todas elas?
 
 Na distância de **Manhattan**, a soma das distâncias **se separa por eixo**, e o minimizador em cada eixo é a **mediana** das coordenadas. Logo, o ponto ótimo é:
