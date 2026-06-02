@@ -1,0 +1,17 @@
+[
+  { "name": "São Paulo", "lon": -46.63, "lat": -23.55 },
+  { "name": "Rio de Janeiro", "lon": -43.20, "lat": -22.91 },
+  { "name": "Belo Horizonte", "lon": -43.94, "lat": -19.92 },
+  { "name": "Brasília", "lon": -47.93, "lat": -15.78 },
+  { "name": "Salvador", "lon": -38.50, "lat": -12.97 },
+  { "name": "Fortaleza", "lon": -38.52, "lat": -3.73 },
+  { "name": "Recife", "lon": -34.88, "lat": -8.05 },
+  { "name": "Porto Alegre", "lon": -51.23, "lat": -30.03 },
+  { "name": "Curitiba", "lon": -49.27, "lat": -25.43 },
+  { "name": "Manaus", "lon": -60.02, "lat": -3.10 },
+  { "name": "Belém", "lon": -48.50, "lat": -1.46 },
+  { "name": "Goiânia", "lon": -49.25, "lat": -16.68 },
+  { "name": "Cuiabá", "lon": -56.10, "lat": -15.60 },
+  { "name": "Florianópolis", "lon": -48.55, "lat": -27.59 },
+  { "name": "Natal", "lon": -35.21, "lat": -5.79 }
+]
