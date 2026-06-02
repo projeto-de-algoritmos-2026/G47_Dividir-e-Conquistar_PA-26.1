@@ -6,6 +6,10 @@
 |-----------|------|
 | 221022060 | Leonardo Fachinello Bonetti |
 
+## Link do Video
+
+https://youtu.be/Bk6OgOQJZoM
+
 
 ---
 
