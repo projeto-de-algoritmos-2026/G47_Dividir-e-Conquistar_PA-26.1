@@ -27,6 +27,18 @@ Ou seja, **duas execuções** da Mediana das Medianas, uma para cada eixo. As ci
 
 ## Screenshots
 
+<img width="1765" height="794" alt="image" src="https://github.com/user-attachments/assets/f71bd8de-324f-43be-b2ef-87e4c1e752c5" />
+
+---
+
+<img width="1284" height="669" alt="image" src="https://github.com/user-attachments/assets/0b17c124-fa87-42f1-bbc3-19e236bd544e" />
+
+---
+
+<img width="1299" height="875" alt="image" src="https://github.com/user-attachments/assets/de0df11d-e043-408e-941d-086bc996e847" />
+
+
+
 
 ---
 
