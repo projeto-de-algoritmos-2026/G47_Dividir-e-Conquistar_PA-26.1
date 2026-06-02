@@ -161,6 +161,64 @@ button:disabled {
   font-size: 1.1rem;
 }
 
+/* Mapa */
+.map {
+  width: 100%;
+  max-width: 560px;
+  display: block;
+  margin: 1rem auto;
+  background: #111c34;
+  border-radius: 8px;
+}
+
+.map .brazil {
+  fill: #14532d;
+  stroke: #4ade80;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+.map .link {
+  stroke: #2a3b5e;
+  stroke-width: 1;
+}
+
+.map .city-dot {
+  fill: var(--accent);
+}
+
+.map .city-label {
+  fill: var(--fg);
+  font-size: 13px;
+}
+
+.map {
+  cursor: crosshair;
+}
+
+.map .guess-dot {
+  fill: #22c55e;
+  stroke: #bbf7d0;
+  stroke-width: 3;
+}
+
+.map .optimal-dot {
+  fill: #ef4444;
+  stroke: #fca5a5;
+  stroke-width: 3;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.map .optimal-label {
+  fill: #fca5a5;
+  font-size: 14px;
+  font-weight: 700;
+}
+
 /* Barras */
 .bars {
   display: flex;

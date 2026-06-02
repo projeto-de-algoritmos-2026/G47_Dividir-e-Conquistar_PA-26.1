@@ -12,3 +12,19 @@ export async function requestSelection(values, k) {
   }
   return res.json();
 }
+
+export async function requestMeetingPoint() {
+  const res = await fetch(`${API_URL}/meeting-point`);
+  if (!res.ok) throw new Error("Falha ao carregar o ponto de encontro.");
+  return res.json();
+}
+
+export async function requestMeetingPointFor(points) {
+  const res = await fetch(`${API_URL}/meeting-point`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ points }),
+  });
+  if (!res.ok) throw new Error("Falha ao recalcular o ponto de encontro.");
+  return res.json();
+}
