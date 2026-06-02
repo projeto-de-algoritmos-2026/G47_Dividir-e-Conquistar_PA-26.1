@@ -16,6 +16,8 @@ class StepSchema(BaseModel):
     phase: str
     values: list[int]
     description: str
+    depth: int = 0
+    reason: str = "inicial"
     groups: list[list[int]] | None = None
     medians: list[int] | None = None
     pivot: int | None = None
