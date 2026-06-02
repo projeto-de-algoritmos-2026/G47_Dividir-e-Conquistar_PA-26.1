@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { requestSelection } from "./api.js";
 import ArrayBars from "./components/ArrayBars.jsx";
 import Controls from "./components/Controls.jsx";
+import StepInfo from "./components/StepInfo.jsx";
 
 function parseArray(text) {
   const trimmed = text.trim();
@@ -90,6 +91,7 @@ export default function App() {
           <p className="phase">
             <strong>{currentStep.phase}</strong> — {currentStep.description}
           </p>
+          <StepInfo step={currentStep} />
           <ArrayBars step={currentStep} />
           {data && stepIndex === steps.length - 1 && (
             <p className="result">
