@@ -1,25 +1,103 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { requestSelection } from "./api.js";
+import ArrayBars from "./components/ArrayBars.jsx";
+import Controls from "./components/Controls.jsx";
 
-const API_URL = "http://127.0.0.1:8000";
+function parseArray(text) {
+  const trimmed = text.trim();
+  if (!trimmed) return null;
+  return trimmed
+    .split(/[\s,]+/)
+    .filter(Boolean)
+    .map(Number);
+}
 
 export default function App() {
-  const [online, setOnline] = useState(null);
+  const [arrayText, setArrayText] = useState("");
+  const [k, setK] = useState("5");
+  const [data, setData] = useState(null);
+  const [stepIndex, setStepIndex] = useState(0);
+  const [playing, setPlaying] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const timer = useRef(null);
+
+  async function run(values) {
+    setLoading(true);
+    setError("");
+    setPlaying(false);
+    try {
+      const result = await requestSelection(values, Number(k));
+      setData(result);
+      setStepIndex(0);
+    } catch (err) {
+      setError(err.message);
+      setData(null);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const steps = data?.steps ?? [];
 
   useEffect(() => {
-    fetch(`${API_URL}/health`)
-      .then((res) => res.json())
-      .then((data) => setOnline(data.status === "ok"))
-      .catch(() => setOnline(false));
-  }, []);
+    if (!playing) return undefined;
+    timer.current = setInterval(() => {
+      setStepIndex((index) => {
+        if (index >= steps.length - 1) {
+          setPlaying(false);
+          return index;
+        }
+        return index + 1;
+      });
+    }, 1200);
+    return () => clearInterval(timer.current);
+  }, [playing, steps.length]);
+
+  const currentStep = steps[stepIndex];
 
   return (
     <main className="app">
       <h1>Mediana das Medianas</h1>
-      <p className="subtitle">Demonstração visual do algoritmo de Dividir e Conquistar.</p>
-      <p className="status">
-        API:{" "}
-        {online === null ? "verificando…" : online ? "conectada ✅" : "offline ❌"}
+      <p className="subtitle">
+        Seleção determinística do k-ésimo menor elemento por Dividir e Conquistar.
       </p>
+
+      <Controls
+        arrayText={arrayText}
+        onArrayText={setArrayText}
+        k={k}
+        onK={setK}
+        onRun={() => run(parseArray(arrayText))}
+        onRandom={() => {
+          setArrayText("");
+          run(null);
+        }}
+        loading={loading}
+        hasSteps={steps.length > 0}
+        stepIndex={stepIndex}
+        totalSteps={steps.length}
+        playing={playing}
+        onPrev={() => setStepIndex((i) => Math.max(0, i - 1))}
+        onNext={() => setStepIndex((i) => Math.min(steps.length - 1, i + 1))}
+        onPlay={() => setPlaying((p) => !p)}
+      />
+
+      {error && <p className="error">⚠ {error}</p>}
+
+      {currentStep && (
+        <section className="stage">
+          <p className="phase">
+            <strong>{currentStep.phase}</strong> — {currentStep.description}
+          </p>
+          <ArrayBars step={currentStep} />
+          {data && stepIndex === steps.length - 1 && (
+            <p className="result">
+              {data.k}º menor elemento = <strong>{data.result}</strong>
+            </p>
+          )}
+        </section>
+      )}
     </main>
   );
 }
